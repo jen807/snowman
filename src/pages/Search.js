@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { fetchSnowyCities } from "../api";
+import { fetchWeatherData, predefinedCities } from "../api";
 import background2 from "../img/backgound2.png";
 
 const Container = styled.div`
@@ -45,7 +45,7 @@ const ListContainer = styled.ul`
   list-style: none;
   padding: 0;
   width: 100%;
-  max-height: 60vh; /* 스크롤 영역 제한 */
+  max-height: 60vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -71,28 +71,49 @@ const ListItem = styled.li`
 `;
 
 const Search = () => {
-  const [cities, setCities] = useState([]); // 눈이 내리는 도시 목록
-  const [query, setQuery] = useState(""); // 검색어 상태
-  const [loading, setLoading] = useState(true);
+  const [cities, setCities] = useState(predefinedCities);
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // API 데이터 호출
   useEffect(() => {
-    const getData = async () => {
+    const fetchCitiesWeather = async () => {
       try {
         setLoading(true);
-        const data = await fetchSnowyCities(); // API 호출
-        setCities(data);
+        const updatedCities = await Promise.all(
+          predefinedCities.map(async (city) => {
+            const weatherData = await fetchWeatherData(city.name);
+            if (weatherData) {
+              const localTime = new Date(
+                (weatherData.dt + weatherData.timezone) * 1000
+              );
+              const hours = localTime.getUTCHours();
+              const minutes = localTime.getUTCMinutes();
+              const formattedTime = `${hours % 12 || 12}:${minutes
+                .toString()
+                .padStart(2, "0")} ${hours >= 12 ? "PM" : "AM"}`;
+
+              return {
+                ...city,
+                weather: weatherData.weather[0].description,
+                temp: weatherData.main.temp,
+                time: formattedTime,
+              };
+            }
+            return city;
+          })
+        );
+        setCities(updatedCities);
       } catch (err) {
-        setError("Failed to fetch snowy cities.");
+        setError("Failed to fetch weather data.");
       } finally {
         setLoading(false);
       }
     };
-    getData();
+
+    fetchCitiesWeather();
   }, []);
 
-  // 검색어에 따라 도시 필터링
   const filteredCities = cities.filter((city) =>
     city.name.toLowerCase().includes(query.toLowerCase())
   );
@@ -117,14 +138,15 @@ const Search = () => {
             filteredCities.map((city) => (
               <ListItem key={city.id}>
                 <h3>
-                  {city.name}, {city.sys.country}
+                  {city.name}, {city.country}
                 </h3>
-                <p>❄ {city.weather[0].description}</p>
-                <p>🌡 {city.main.temp} °C</p>
+                {city.time && <p>🕒 {city.time}</p>}
+                {city.weather && <p>❄ {city.weather}</p>}
+                {city.temp && <p>🌡 {city.temp} °C</p>}
               </ListItem>
             ))
           ) : (
-            <p style={{ color: "white" }}>No snowy cities found...</p>
+            <p style={{ color: "white" }}>There's no snowy cities here...</p>
           )}
         </ListContainer>
       )}
