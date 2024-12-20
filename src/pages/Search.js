@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { fetchWeatherData, predefinedCities } from "../api";
+import { useNavigate } from "react-router-dom";
 import background2 from "../img/backgound2.png";
+import snowmansvg from "../img/snowman.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -13,13 +15,13 @@ const Container = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+`;
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+const Bg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 `;
 
 const Title = styled.h2`
@@ -52,7 +54,7 @@ const ListContainer = styled.ul`
   padding: 0 20px;
   box-sizing: border-box;
   width: 100%;
-  max-height: 65vh;
+  max-height: 71vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -77,6 +79,7 @@ const ListItem = styled.li`
   justify-content: space-between;
   align-items: flex-start;
   min-height: 60px;
+  cursor: pointer;
 
   h3 {
     margin: 0;
@@ -122,6 +125,7 @@ const Search = () => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCitiesWeather = async () => {
@@ -165,6 +169,10 @@ const Search = () => {
     city.name.toLowerCase().includes(query.toLowerCase())
   );
 
+  const handleCityClick = (cityName) => {
+    navigate(`/detail/${cityName}`);
+  };
+
   return (
     <Container>
       <Title>Where we can go?</Title>
@@ -179,27 +187,29 @@ const Search = () => {
         <p style={{ color: "white" }}>Loading...</p>
       ) : error ? (
         <p style={{ color: "red" }}>{error}</p>
-      ) : (
+      ) : filteredCities.length > 0 ? (
         <ListContainer>
-          {filteredCities.length > 0 ? (
-            filteredCities.map((city) => (
-              <ListItem key={city.id}>
-                <h3>
-                  {city.name}
-                  {city.time && <p>{city.time}</p>}
-                </h3>
-                <div>
-                  {city.weather && <h5>❄ {city.weather}</h5>}
-                  {city.temp && <h2>🌡 {city.temp} °C</h2>}
-                </div>
-              </ListItem>
-            ))
-          ) : (
-            <p style={{ color: "white" }}>There's no snowy cities here...</p>
-          )}
+          {filteredCities.map((city) => (
+            <ListItem key={city.id} onClick={() => handleCityClick(city.name)}>
+              <h3>
+                {city.name}
+                {city.time && <p>{city.time}</p>}
+              </h3>
+              <div>
+                {city.weather && <h5>❄ {city.weather}</h5>}
+                {city.temp && <h2>🌡 {city.temp} °C</h2>}
+              </div>
+            </ListItem>
+          ))}
         </ListContainer>
+      ) : (
+        <img
+          src={snowmansvg}
+          alt="No snowy cities"
+          style={{ marginTop: "200px" }}
+        />
       )}
-      <img src={background2} alt="bg" />
+      <Bg src={background2} alt="bg" />
     </Container>
   );
 };
