@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import homebackground from "../img/homebackground.png"
 import { Link } from "react-router-dom"
+// import { textDecorationLine } from "html2canvas/dist/types/css/property-descriptors/text-decoration-line"
 
 const Container = styled.div`
 width: 100%;
@@ -51,11 +52,11 @@ const Home = () => {
     return(
         <Container>
             <Title>Do you <br/> wanna build<br/> a snowman<br/> with me?</Title>
+            <Link to={"/search"} style={{fontSize: '32px', fontWeight: 'bold', color: '#A8D0E9', textDecoration: 'none'}}>
             <Start>
-            <Link to={"/search"}>
             Start
-            </Link>
             </Start>
+            </Link>
             <img src={homebackground} alt="bg" />
         </Container>
     )
