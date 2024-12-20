@@ -28,45 +28,92 @@ const Title = styled.h2`
   font-size: 32px;
   text-align: center;
   letter-spacing: 1px;
+  margin: 10px 0;
 `;
 
 const Input = styled.input`
+  all: unset;
   width: 80%;
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  margin: 20px 0;
-  text-align: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid white;
+  font-size: 22px;
+  margin: 10px 0;
+  text-align: left;
+  font-family: "AHN_L";
+  color: white;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
 `;
 
 const ListContainer = styled.ul`
   list-style: none;
-  padding: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
   width: 100%;
-  max-height: 60vh;
+  max-height: 65vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ListItem = styled.li`
-  background: #dff6f0;
-  border-radius: 10px;
-  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid white;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 10px 20px 6px 20px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 60px;
 
   h3 {
     margin: 0;
-    color: #333;
+    font-size: 20px;
+    color: #1e5475;
+    text-align: left;
   }
   p {
-    margin: 5px 0;
-    color: #555;
+    font-size: 14px;
+    margin-top: 2px;
+    color: #41718f;
+    font-weight: 500;
+  }
+
+  h5 {
+    color: #41718f;
+    font-size: 14px;
+    text-align: right;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 2px;
+  }
+
+  h2 {
+    font-size: 14px;
+    margin-top: 4px;
+    color: #41718f;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  div {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
   }
 `;
 
@@ -138,11 +185,13 @@ const Search = () => {
             filteredCities.map((city) => (
               <ListItem key={city.id}>
                 <h3>
-                  {city.name}, {city.country}
+                  {city.name}
+                  {city.time && <p>{city.time}</p>}
                 </h3>
-                {city.time && <p>🕒 {city.time}</p>}
-                {city.weather && <p>❄ {city.weather}</p>}
-                {city.temp && <p>🌡 {city.temp} °C</p>}
+                <div>
+                  {city.weather && <h5>❄ {city.weather}</h5>}
+                  {city.temp && <h2>🌡 {city.temp} °C</h2>}
+                </div>
               </ListItem>
             ))
           ) : (

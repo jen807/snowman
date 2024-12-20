@@ -4,18 +4,15 @@ import Search from "./pages/Search";
 import Detail from "./pages/Detail";
 
 const Router = () => {
-return(
-
+  return (
     <HashRouter>
-        <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/search" element={<Search/>}/>
-            <Route path="/detail" element={<Detail/>}/>
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/detail" element={<Detail />} />
+      </Routes>
     </HashRouter>
-
-)
-
+  );
 };
 
 export default Router;
