@@ -40,3 +40,50 @@
 | 12월 17일 | 컨셉 구상, 기획                           |
 | 12월 18일 | 디자인 완성, 기본 파일구조 세팅, API 구현 |
 | 12월 19일 | 기능 구현 완성, 컨펌 후 배포              |
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+# Do You Wanna Build a Snowman
+
+## Purpose
+
+The main purpose of this app is to provide real-time information about places around the world where it is snowing. It displays weather data, the country of the location, and the current time in a list format for easy viewing. Users can search for a specific location or choose from a list of snowing regions. By clicking on a particular region, detailed weather information will be shown along with the message "Do you wanna build a snowman with me at here?". Additionally, the 'Save' button allows users to capture a screenshot of the screen, which can be shared easily. This app provides fun and intuitive information about snowing regions, offering users a chance to capture and share special moments.
+
+## Features
+
+- **Search for Snowing Regions**  
+  Users can search for a specific region and check the weather data to determine if it is snowing. The search results are added to a list, allowing users to quickly find the information they need.
+
+- **List of Snowing Regions Around the World**  
+  Displays a real-time list of regions where it is snowing around the world. Each item in the list includes weather information, the country's name, and the current time.
+
+- **Screenshot and Share**  
+  Users can click the 'Save' button to capture the current screen as an image. The captured image will exclude the button, and users can download or share it easily.
+
+- **Time Information**  
+  Displays the current time of each region, making it easy for users to understand the local time of the snowing locations.
+
+## Tech Stack
+
+- React
+- JavaScript
+- HTML
+- CSS
+
+## Supported Devices
+
+- Mobile
+
+## Deployment
+
+[GitHub Repository](https://github.com/jen807/snowman.git)
+
+## Timeline
+
+| Date        | Task                                |
+|-------------|-------------------------------------|
+| December 17 | Concept planning and design         |
+| December 18 | Design completed, set up basic file structure, API implementation |
+| December 19 | Complete functionality, confirmation, and deployment |
+
