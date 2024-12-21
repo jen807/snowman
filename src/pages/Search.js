@@ -4,6 +4,7 @@ import { fetchWeatherData, predefinedCities } from "../api";
 import { useNavigate } from "react-router-dom";
 import background2 from "../img/backgound2.png";
 import snowmansvg from "../img/snowman.svg";
+import TitleWrap from "../components/TitleWrap";
 
 const Container = styled.div`
   width: 100%;
@@ -174,43 +175,49 @@ const Search = () => {
   };
 
   return (
-    <Container>
-      <Title>Where we can go?</Title>
-      <Input
-        type="text"
-        placeholder="Enter a city name!"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-
-      {loading ? (
-        <p style={{ color: "white" }}>Loading...</p>
-      ) : error ? (
-        <p style={{ color: "red" }}>{error}</p>
-      ) : filteredCities.length > 0 ? (
-        <ListContainer>
-          {filteredCities.map((city) => (
-            <ListItem key={city.id} onClick={() => handleCityClick(city.name)}>
-              <h3>
-                {city.name}
-                {city.time && <p>{city.time}</p>}
-              </h3>
-              <div>
-                {city.weather && <h5>❄ {city.weather}</h5>}
-                {city.temp && <h2>🌡 {city.temp} °C</h2>}
-              </div>
-            </ListItem>
-          ))}
-        </ListContainer>
-      ) : (
-        <img
-          src={snowmansvg}
-          alt="No snowy cities"
-          style={{ marginTop: "200px" }}
+    <>
+      <TitleWrap title="Search" />
+      <Container>
+        <Title>Where we can go?</Title>
+        <Input
+          type="text"
+          placeholder="Enter a city name!"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
-      )}
-      <Bg src={background2} alt="bg" />
-    </Container>
+
+        {loading ? (
+          <p style={{ color: "white" }}>Loading...</p>
+        ) : error ? (
+          <p style={{ color: "red" }}>{error}</p>
+        ) : filteredCities.length > 0 ? (
+          <ListContainer>
+            {filteredCities.map((city) => (
+              <ListItem
+                key={city.id}
+                onClick={() => handleCityClick(city.name)}
+              >
+                <h3>
+                  {city.name}
+                  {city.time && <p>{city.time}</p>}
+                </h3>
+                <div>
+                  {city.weather && <h5>❄ {city.weather}</h5>}
+                  {city.temp && <h2>🌡 {city.temp} °C</h2>}
+                </div>
+              </ListItem>
+            ))}
+          </ListContainer>
+        ) : (
+          <img
+            src={snowmansvg}
+            alt="No snowy cities"
+            style={{ marginTop: "200px" }}
+          />
+        )}
+        <Bg src={background2} alt="bg" />
+      </Container>
+    </>
   );
 };
 

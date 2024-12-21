@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
 import result from "../img/result.png";
+import { Helmet } from "react-helmet-async";
+import TitleWrap from "../components/TitleWrap";
 
 const Container = styled.div`
   width: 100%;
@@ -138,29 +140,32 @@ const Detail = () => {
   };
 
   return (
-    <Container ref={captureRef}>
-      <div>
-        <Box>
-          <h2>To.</h2>
-          <Input />
-        </Box>
-        <Title>
-          Do you <br /> wanna build
-          <br /> a snowman
-          <br /> with me
-        </Title>
-        <h3>in {cityName}</h3>
-        <Box>
-          <h2>From.</h2>
-          <Input />
-        </Box>
-        <ButtonWrap>
-          <Button onClick={handleSave}>Save</Button>
-          <Button onClick={() => navigate("/")}>Home</Button>
-        </ButtonWrap>
-      </div>
-      <Bg src={result} alt="bg" />
-    </Container>
+    <>
+      <TitleWrap title="Letter" />
+      <Container ref={captureRef}>
+        <div>
+          <Box>
+            <h2>To.</h2>
+            <Input />
+          </Box>
+          <Title>
+            Do you <br /> wanna build
+            <br /> a snowman
+            <br /> with me
+          </Title>
+          <h3>in {cityName}</h3>
+          <Box>
+            <h2>From.</h2>
+            <Input />
+          </Box>
+          <ButtonWrap>
+            <Button onClick={handleSave}>Save</Button>
+            <Button onClick={() => navigate("/")}>Home</Button>
+          </ButtonWrap>
+        </div>
+        <Bg src={result} alt="bg" />
+      </Container>
+    </>
   );
 };
 
