@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/snowman/static/js/main.25be4003.js",
+    "static/media/result.png": "/snowman/static/media/result.c15a64d1d5b32bc680c9.png",
+    "static/media/homebackground.png": "/snowman/static/media/homebackground.922e7d70aaac8b979d45.png",
+    "static/media/snowman.svg": "/snowman/static/media/snowman.dbbc490826b5802bad0bdf0ee4ea2997.svg",
+    "index.html": "/snowman/index.html",
+    "main.25be4003.js.map": "/snowman/static/js/main.25be4003.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.25be4003.js"
+  ]
+}
