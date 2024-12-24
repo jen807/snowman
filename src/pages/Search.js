@@ -68,7 +68,7 @@ const ListContainer = styled.ul`
   }
 
   @media screen and (max-width: 430px) {
-    max-height: 85vh;
+    max-height: 90vh;
   }
 `;
 
