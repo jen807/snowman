@@ -55,7 +55,7 @@ const ListContainer = styled.ul`
   padding: 0 20px;
   box-sizing: border-box;
   width: 100%;
-  max-height: 71vh;
+  max-height: 75vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
