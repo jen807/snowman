@@ -55,7 +55,7 @@ const ListContainer = styled.ul`
   padding: 0 20px;
   box-sizing: border-box;
   width: 100%;
-  max-height: 85vh;
+  max-height: 70vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -65,6 +65,10 @@ const ListContainer = styled.ul`
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media screen and (max-width: 430px) {
+    max-height: 85vh;
   }
 `;
 
