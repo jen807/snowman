@@ -28,7 +28,7 @@ const Container = styled.div`
   }
 
   div {
-    margin-top: 25px;
+    margin-top: 50px;
   }
 `;
 
