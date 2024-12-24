@@ -6,12 +6,12 @@ import TitleWrap from "../components/TitleWrap";
 // 눈이 떨어지는 애니메이션
 const snowfall = keyframes`
   0% {
-    transform: translateY(-10px); /* 최상단에서 시작 */
+    transform: translateY(-20px); /* 최상단 위에서 시작 */
     opacity: 1;
   }
   100% {
     transform: translateY(100vh); /* 화면 끝까지 내려감 */
-    opacity: 0; /* 사라짐 */
+    opacity: 0; /* 스르륵 사라짐 */
   }
 `;
 
@@ -34,10 +34,10 @@ const Container = styled.div`
   }
 `;
 
-// 눈의 개별 조각 스타일
+// 눈 조각 스타일
 const Snowflake = styled.div`
   position: absolute;
-  top: -20px; /* 최상단에서 10px 위에서 시작 */
+  top: ${(props) => props.startTop}px; /* 최상단 위에서 10~20px 랜덤 */
   left: ${(props) => props.left}%; /* 랜덤 위치 */
   width: ${(props) => props.size}px; /* 눈 크기 */
   height: ${(props) => props.size}px;
@@ -89,6 +89,7 @@ const Home = () => {
   // 눈 조각 생성
   const createSnowflake = () => ({
     id: Math.random(),
+    startTop: Math.random() * -10 - 10, // -10px ~ -20px 범위
     left: Math.random() * 100, // 0 ~ 100% 랜덤 위치
     size: Math.random() * 4 + 2, // 2 ~ 6px 크기
     duration: Math.random() * 5 + 7, // 7 ~ 12초 애니메이션 지속 시간
@@ -106,6 +107,7 @@ const Home = () => {
           {snowflakes.map((flake) => (
             <Snowflake
               key={flake.id}
+              startTop={flake.startTop}
               left={flake.left}
               size={flake.size}
               duration={flake.duration}
