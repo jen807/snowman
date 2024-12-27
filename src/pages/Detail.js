@@ -9,7 +9,7 @@ import TitleWrap from "../components/TitleWrap";
 const Container = styled.div`
   width: 100%;
   max-width: 393px;
-  min-height: 800px; /* 충분히 큰 높이 설정 */
+  min-height: 800px;
   margin: 0 auto;
   position: relative;
   padding: 40px 0;

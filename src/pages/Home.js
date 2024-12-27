@@ -58,7 +58,7 @@ const Title = styled.div`
 
 const Start = styled.div`
   font-family: "AHN_L";
-  width: 155px;
+  width: 200px;
   height: 40px;
   background-color: white;
   border-radius: 50px;
@@ -124,13 +124,27 @@ const Home = () => {
         <Link
           to={"/search"}
           style={{
-            fontSize: "32px",
+            fontSize: "30px",
             fontWeight: "bold",
             color: "#A8D0E9",
             textDecoration: "none",
+            marginBottom: "20px"
           }}
         >
-          <Start>Start</Start>
+          <Start>Search the place</Start>
+        </Link>
+        <Link
+          to={"/snowman"}
+          style={{
+            fontSize: "30px",
+            fontWeight: "bold",
+            color: "#A8D0E9",
+            textDecoration: "none",
+            textAlign: "center",
+            
+          }}
+        >
+          <Start>Build a snowman</Start>
         </Link>
         <img src={homebackground} alt="bg" />
       </Container>
