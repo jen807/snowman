@@ -7,14 +7,25 @@ import background2 from "../img/backgound2.png";
 import basic from "../img/snowmanimg/basic.svg";
 import bear from "../img/snowmanimg/bear.svg";
 import bunny from "../img/snowmanimg/bunny.svg";
+import cat from "../img/snowmanimg/cat.svg";
+import dog from "../img/snowmanimg/dog.svg";
 import eyecry from "../img/snowmanimg/eyecry.svg";
 import eyeheart from "../img/snowmanimg/eyeheart.svg";
+import eyebasic from "../img/snowmanimg/eyebasic.svg";
+import eyedrunk from "../img/snowmanimg/eyedrunk.svg";
+import eyesad from "../img/snowmanimg/eyesad.svg";
 import mouthw from "../img/snowmanimg/mouthw.svg";
 import mouthsmile from "../img/snowmanimg/mouthsmile.svg";
 import handsdown from "../img/snowmanimg/handsdown.svg";
 import handsup from "../img/snowmanimg/handsup.svg";
 import ribbonpink from "../img/snowmanimg/ribbonpink.svg";
 import ribbonblue from "../img/snowmanimg/ribbonblue.svg";
+import handsup2 from "../img/snowmanimg/handsup2.svg"
+import handsdown2 from "../img/snowmanimg/handsdown2.svg"
+import handsshy from "../img/snowmanimg/handsshy.svg"
+import scarfblue from "../img/snowmanimg/scarfblue.svg"
+import scarfred from "../img/snowmanimg/scarfred.svg"
+import scarfgreen from "../img/snowmanimg/scarfgreen.svg"
 
 const Container = styled.div`
   width: 100%;
@@ -70,8 +81,8 @@ const ButtonWrap = styled.div`
 
 const SnowmanFrame = styled.div`
   position: relative;
-  width: 200px;
-  height: 300px;
+  width: 50px;
+  height: 100px;
   margin: 20px auto;
 `;
 
@@ -120,7 +131,7 @@ const Snowman = () => {
           </Layer>
         </SnowmanFrame>
 
-        <Title>나만의 눈사람 만들기</Title>
+        <Title>Build My Own Snowman</Title>
 
         {/* Body Options */}
         <ButtonWrap>
@@ -135,6 +146,9 @@ const Snowman = () => {
         <ButtonWrap>
           <Button onClick={() => setEyes(eyecry)}>Crying Eyes</Button>
           <Button onClick={() => setEyes(eyeheart)}>Heart Eyes</Button>
+          <Button onClick={() => setEyes(eyebasic)}>Basic Eyes</Button>
+          <Button onClick={() => setEyes(eyesad)}>Sad Eyes</Button>
+          <Button onClick={() => setEyes(eyedrunk)}>Drunk Eyes</Button>
         </ButtonWrap>
 
         {/* Mouth Options */}
@@ -147,12 +161,18 @@ const Snowman = () => {
         <ButtonWrap>
           <Button onClick={() => setHands(handsdown)}>Hands Down</Button>
           <Button onClick={() => setHands(handsup)}>Hands Up</Button>
+          <Button onClick={() => setHands(handsup2)}>Hands Up</Button>
+          <Button onClick={() => setHands(handsdown2)}>Hands Up</Button>
+          <Button onClick={() => setHands(handsshy)}>Hands Up</Button>
         </ButtonWrap>
 
         {/* Accessory Options */}
         <ButtonWrap>
           <Button onClick={() => setAccessory(ribbonpink)}>Pink Ribbon</Button>
           <Button onClick={() => setAccessory(ribbonblue)}>Blue Ribbon</Button>
+          <Button onClick={() => setAccessory(scarfblue)}>Blue Scarf</Button>
+          <Button onClick={() => setAccessory(scarfgreen)}>Green Scarf</Button>
+          <Button onClick={() => setAccessory(scarfred)}>Red Scarf</Button>
         </ButtonWrap>
 
         <Bg src={background2} alt="bg" />
