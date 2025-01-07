@@ -30,8 +30,7 @@
 - 모바일
 
 ## 배포
-
-[GitHub Repository](https://github.com/jen807/snowman.git)
+[(https://github.com/jen807/snowman.git)](https://jen807.github.io/snowman/)
 
 ## 계획표
 
@@ -77,7 +76,7 @@ The main purpose of this app is to provide real-time information about places ar
 
 ## Deployment
 
-[GitHub Repository](https://github.com/jen807/snowman.git)
+[[GitHub Repository](https://github.com/jen807/snowman.git)](https://jen807.github.io/snowman/)
 
 ## Timeline
 
